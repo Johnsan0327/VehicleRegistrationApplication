@@ -4,16 +4,15 @@ import "./add.css";
 import {Button} from "../Button";
 import axios from "axios";
 
-
 const Add=(props)=>{
-    const [vehicle,setVehicle]=useState({
-        name:props.vehicle ? props.vehicle.name :'',
-        Email:props.vehicle ? props.vehicle.Email:'',
-        Adress:props.vehicle ? props.vehicle.Adress:'',
-        PhoneNumber:props.vehicle ? props.vehicle.PhoneNumber:'',
-        NIC :props.vehicle ? props.vehicle.NIC:'',
-        TypeOfVehicle : props.vehicle ? props.vehicle.TypeOfVehicle:'',
-        VehicleNumberPlate: props.vehicle ? props.vehicle.VehicleNumberPlate:''
+    const [vehicle]=useState({
+        fullname:props.vehicle ? props.vehicle.name :'',
+        email:props.vehicle ? props.vehicle.Email:'',
+        Adress:props.vehicle ? props.vehicle.Address:'',
+        Phonenumber:props.vehicle ? props.vehicle.PhoneNumber:'',
+        nic :props.vehicle ? props.vehicle.NIC:'',
+        Typeofvehicle : props.vehicle ? props.vehicle.TypeOfVehicle:'',
+        Vehiclenumberplate: props.vehicle ? props.vehicle.VehicleNumberPlate:''
 
     });
     const [errorMsg,setErrorMsg]=useState('');
@@ -121,6 +120,7 @@ const Add=(props)=>{
                 </Button>
             </Form>
         </div>
+
         </>
     )
 }

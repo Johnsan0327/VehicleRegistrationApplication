@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { Link } from 'react-router-dom';
-import Add from'../components/pages/Add.js';
 import './Navbar.css';
 
 function Navbar() {
@@ -51,6 +50,7 @@ function Navbar() {
                                 View All
                             </Link>
                         </li>
+
                         <li className='nav-item'>
                             <Link
                                 to='/delete'
@@ -59,6 +59,16 @@ function Navbar() {
                             >
                                 Delete
                             </Link>
+                        </li>
+
+                            <li className='nav-item'>
+                                <Link
+                                    to='/find'
+                                    className='nav-links'
+                                    onClick={closeMobileMenu}
+                                >
+                                    Find
+                                </Link>
                         </li>
 
                         <li>

@@ -1,13 +1,14 @@
 import React from "react";
 import '../../App.css';
-import MainComponent from "../MainComponent";
+import MainComponent from '../MainComponent';
+import Footer from '../Footer';
 
 function Home(){
     return(
         <>
-        <MainComponent></MainComponent>
-            <mainPageContent>
-            </mainPageContent>
+        <MainComponent />
+            <mainPageContent />
+            <Footer />
         </>
     )
 
