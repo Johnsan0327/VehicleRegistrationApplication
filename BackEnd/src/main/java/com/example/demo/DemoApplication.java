@@ -6,7 +6,6 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -81,16 +80,16 @@ public class DemoApplication {
     }
 
     @PostMapping(path = "/viewOne")
-    public @ResponseBody
-    Vehicle viewOne(@RequestParam Long id) {
-        return vehicleRepository.findById(id);
+    public
+    Vehicle viewOne(@RequestParam(value="Id") Long Id) {
+        return vehicleRepository.findById(Id);
     }
 
     @PutMapping("/update/{Id}")
-    public Vehicle update(@PathVariable(value = "Id")
-                                                  long Id, @Valid @RequestParam Vehicle vehicleDetails)
+    public Vehicle update(@PathVariable(value = "Id") String Id, @RequestParam Vehicle vehicleDetails)
             throws ResourceNotFoundException {
-        Vehicle vehicle = vehicleRepository.findById(Id);
+        Long convertedId=Long.parseLong(Id);
+        Vehicle vehicle = vehicleRepository.findById(convertedId);
                 if(vehicle == null) {
                     throw  new ResourceNotFoundException("Vehicle details not found for this id:: " +Id);
                 } else {
@@ -100,18 +99,21 @@ public class DemoApplication {
                     vehicle.setEmail(vehicleDetails.getEmail());
                     vehicle.setPhoneNumber(vehicleDetails.getPhoneNumber());
                     vehicle.setAddress(vehicleDetails.getAddress());
-                    vehicle.setLicensePlateNumber(vehicle.getLicensePlateNumber());
+                    vehicle.setLicensePlateNumber(vehicleDetails.getLicensePlateNumber());
                     final Vehicle updateTable=vehicleRepository.save(vehicle);
                     return updateTable;
                 }
-    }@DeleteMapping(path = "/delete/{Id}")
-    public Vehicle deleteRecord(@PathVariable(value = "Id") long Id) throws ResourceNotFoundException{
-        Vehicle vehicle=vehicleRepository.findById(Id);
+    }
+    @DeleteMapping(path = "/delete/{Id}")
+    public String deleteRecord(@PathVariable(value = "Id") String Id) throws ResourceNotFoundException{
+        Long convertedId = Long.parseLong(Id);
+        Vehicle vehicle=vehicleRepository.findById(convertedId);
         if (vehicle==null){
             throw new ResourceNotFoundException("Vehicle details not found for this id:: " +Id);
 
         }else {
-            return vehicle;
+            vehicleRepository.delete(vehicle);
+            return "Deleted Vehicle Successfully";
         }
     }
 }
