@@ -1,11 +1,10 @@
 import React,{useState} from'react';
-import {Form} from "react-bootstrap";
+import {Form,Button} from "react-bootstrap";
 import "./add.css";
-import {Button} from "../Button";
 import axios from "axios";
 
 const Add=(props)=>{
-    const [vehicle]=useState({
+    const [vehicle,setVehicle]=useState({
         fullname:props.vehicle ? props.vehicle.name :'',
         email:props.vehicle ? props.vehicle.Email:'',
         Adress:props.vehicle ? props.vehicle.Address:'',
@@ -18,7 +17,7 @@ const Add=(props)=>{
     const [errorMsg,setErrorMsg]=useState('');
     const {name,Email,Address,PhoneNumber,NIC,TypeOfVehicle,VehicleNumberPlate}=vehicle;
 
-    const handleOnSubmit=(event)=>{
+    const handleOnSubmit= (event) => {
         event.preventDefault();
         const values=[name,Email,Address,PhoneNumber,NIC,TypeOfVehicle,VehicleNumberPlate];
         let errorMsg='';
@@ -39,7 +38,7 @@ const Add=(props)=>{
             };
             axios.post('http://localhost:8080/add', vehicle).then(resp => {
                 console.log('successfully created');
-            });
+            })
             props.handleOnSubmit(vehicle);
         }else {
             errorMsg="Please Fill Out All the fields";
@@ -120,7 +119,9 @@ const Add=(props)=>{
                 </Button>
             </Form>
         </div>
-
+            <div>
+                <video src='Videos/Add.mp4' autoPlay loop muted/>
+            </div>
         </>
     )
 }

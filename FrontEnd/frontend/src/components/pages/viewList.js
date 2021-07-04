@@ -22,9 +22,9 @@ class ViewList extends Component{
         return(
             <>
                 <div>
-                    <h2> Details</h2>
+                    <h2 align="center"> Details</h2>
                     <div>
-                        <table className="Styled-table">
+                        <table className="Styled-table" align="center">
                             <tbody>
                             <tr>
                                 <th>ID</th>
@@ -54,6 +54,9 @@ class ViewList extends Component{
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div>
+                    <video src='Videos/ViewAllVideo.mp4' autoPlay loop muted/>
                 </div>
             </>
         )

@@ -86,7 +86,7 @@ public class DemoApplication {
     }
 
     @PutMapping("/update/{Id}")
-    public Vehicle update(@PathVariable(value = "Id") String Id, @RequestParam Vehicle vehicleDetails)
+    public Vehicle update(@PathVariable(value = "Id") String Id, @RequestBody Vehicle vehicleDetails)
             throws ResourceNotFoundException {
         Long convertedId=Long.parseLong(Id);
         Vehicle vehicle = vehicleRepository.findById(convertedId);

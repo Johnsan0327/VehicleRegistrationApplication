@@ -30,7 +30,7 @@ class DeleteList extends Component{
         return(
             <>
                 <div>
-                    <h2> Details</h2>
+                    <h2 align="center"> Details</h2>
                     <div>
                         <table className="Styled-table">
                             <tbody>
@@ -64,6 +64,9 @@ class DeleteList extends Component{
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div>
+                    <video src='Videos/DeleteVideo.mp4' autoPlay loop muted/>
                 </div>
             </>
         )
