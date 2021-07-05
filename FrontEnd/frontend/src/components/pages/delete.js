@@ -8,6 +8,7 @@ class Delete{
         return axios.get(VEHICLE_API_BASE_URL);
     }
     deleteDetails(Id: any){
+
         return axios.delete(VEHICLE_API_URl+Id);
     }
 }

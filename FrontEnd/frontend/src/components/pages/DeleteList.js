@@ -1,7 +1,6 @@
 import Delete from "./delete";
 import React,{Component} from "react";
 import "./add.css"
-import axios from "axios";
 
 class DeleteList extends Component{
 

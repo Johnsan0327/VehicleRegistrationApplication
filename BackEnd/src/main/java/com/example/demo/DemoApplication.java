@@ -23,8 +23,8 @@ public class DemoApplication {
         SpringApplication.run(DemoApplication.class, args);
     }
 
-    @PostMapping("/read")
-    public static String read(@RequestParam(name = "plateNumber") String plateNumber) {
+    @GetMapping("/read/{plateNumber}")
+    public static String read(@PathVariable String plateNumber) {
 
         if (validate(plateNumber)) {
             String formOfVehicle;
@@ -43,13 +43,16 @@ public class DemoApplication {
 
     public static Boolean validate(String plateNumber) {
         boolean validStatus = false;
+        Pattern q=Pattern.compile("^([a-zA-Z]{1,3}|([0-9]{1,3}))-[0-9]{4}");
+        Matcher w= q.matcher(plateNumber);
         Pattern j=Pattern.compile("^([0-9]{1,2})[\\s]*+(([\\u0D80-\\u0DFF]{1})|([\\u200D]{1}))+[\\s]*+([0-9]{4})");
         Matcher m=j.matcher(plateNumber);
         if (m.find()) {
             validStatus = true;
+        } else if (w.find()) {
+            validStatus=true;
         }
         return validStatus;
-
     }
 
     @PostMapping(path = "/add")

@@ -8,7 +8,6 @@ video {
 
 
 .form{
-    background-color: #009879;
     border-collapse: collapse;
     display: flex;
     justify-content: center;
@@ -21,10 +20,12 @@ video {
     padding: 5px 10px;
 }
 .Label{
+    align: center;
     padding: 10px 10px;
     width: 10px;
 }
 .input-text {
+    align: center;
     font-size: 1rem;
     font-weight: 400;
     width: 85%;
